@@ -1,0 +1,8 @@
+name: learn-github-actions
+on: [push]
+jobs:
+  check-datetime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: date +"%h %d, %Y [%H:%M:%S %p]"
