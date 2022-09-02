@@ -6,3 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: date +"%h %d, %Y [%H:%M:%S %p]"
+
+  word-count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Count words and uniqie words
+        run: ./.github/scripts/word-count.sh 
+        shell: bash
