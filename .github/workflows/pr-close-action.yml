@@ -1,0 +1,17 @@
+name: pr-close-action
+on:
+  pull_request:
+    types:
+      - "closed"
+
+jobs:
+  pr-close:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Pull Request Closed"
+  
+  if-merge:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Pull Request Successfully Merged"
