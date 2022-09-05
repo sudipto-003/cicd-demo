@@ -1,0 +1,35 @@
+name: seq-jobs
+on: 
+  push:
+    paths:
+      - "trigger/c2.txt"
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      c1: ${{ steps.step1.outputs.test }}
+      c2: ${{ steps.step2.outputs.test }}
+    steps:
+      - id: step1
+        run: echo "::set-output name=test::j11"
+      - id: step2
+        run: echo "::set-output name=test::j12"
+  
+  job2:
+    runs-on: ubuntu-latest
+    outputs:
+      o1: ${{ steps.step1.outputs.test }}
+      o2: ${{ steps.step2.outputs.test }}
+    steps:
+      - id: step1
+        run: echo "::set-output name=test::201"
+      - id: step2
+        run: echo "::set-output name=test::403"
+
+  job3:
+    needs: [job1, job2]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.job1.outputs.c1 }} ${{ needs.job1.outputs.c2 }}
+      - run: echo ${{ needs.job2.outputs.o1 }} ${{ needs.job2.outputs.o2 }}
