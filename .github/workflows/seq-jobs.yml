@@ -1,0 +1,25 @@
+name: seq-jobs
+on: 
+  push:
+    paths:
+      - "trigger/**.txt"
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 10s
+      - run: echo "Job 1 Completed"
+  
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 5s
+      - run: echo "Job 2 Completed"
+  
+  job3:
+    needs: [job1, job2]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job 3 Completed"
