@@ -1,0 +1,10 @@
+name: actions-on-dev-branch
+on: 
+  push:
+    branches:
+      - "dev/**"
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Push on a dev branch"
