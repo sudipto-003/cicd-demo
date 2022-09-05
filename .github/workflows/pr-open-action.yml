@@ -1,0 +1,17 @@
+name: pr-open-action
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  pr-open:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Pull Request Opened"
+  
+  if-job:
+    if: startsWith(github.head_ref, 'dev/')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The head of this PR starts with 'dev/'"
