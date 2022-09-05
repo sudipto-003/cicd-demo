@@ -1,1 +1,3 @@
 This is a file to filter some workflow actions
+
+# Trigger for parallel jobs
