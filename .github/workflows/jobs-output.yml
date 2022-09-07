@@ -1,4 +1,4 @@
-name: seq-jobs
+name: downstream-output
 on: 
   push:
     paths:

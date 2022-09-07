@@ -2,7 +2,7 @@ name: ind-jobs
 on: 
   push:
     paths:
-      - "trigger/**.txt"
+      - "trigger/exp.txt"
 
 jobs:
   job1:

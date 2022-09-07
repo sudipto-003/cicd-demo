@@ -1,0 +1,15 @@
+name: matrix-emp
+on:
+  push:
+    paths: 
+      - "trigger/m.txt"
+
+jobs:
+  mjobs:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: uname -a
